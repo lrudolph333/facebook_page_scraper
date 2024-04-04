@@ -94,14 +94,16 @@ class Facebook_scraper:
         # sometimes we get popup that says "your request couldn't be processed", however
         # posts are loading in background if popup is closed, so call this method in case if it pops up.
         Utilities._Utilities__close_error_popup(self.__driver)
-        # wait for post to load
-        elements_have_loaded = Utilities._Utilities__wait_for_element_to_appear(
-            self.__driver, self.__layout, self.timeout)
+        # wait for post to load ( this selector has changed, commenting out for now)
+        # elements_have_loaded = Utilities._Utilities__wait_for_element_to_appear(
+        #     self.__driver, self.__layout, self.timeout)
         # scroll down to bottom most
         Utilities._Utilities__scroll_down(self.__driver, self.__layout)
         self.__handle_popup(self.__layout)
 
-        while len(self.__data_dict) < self.posts_count and elements_have_loaded:
+        # while len(self.__data_dict) < self.posts_count and elements_have_loaded:
+        while len(self.__data_dict) < self.posts_count:
+            print("data dict: " + str(len(self.__data_dict)))
             self.__handle_popup(self.__layout)
             # self.__find_elements(name)
             self.__find_elements()

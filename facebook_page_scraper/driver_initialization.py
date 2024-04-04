@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 
-from seleniumwire import webdriver
+import logging
+
 # to add capabilities for chrome and firefox, import their Options with different aliases
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
+from seleniumwire import webdriver
 # import webdriver for downloading respective driver for the browser
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
-import logging
 
 logger = logging.getLogger(__name__)
 format = logging.Formatter(

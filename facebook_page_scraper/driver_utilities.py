@@ -126,6 +126,8 @@ class Utilities:
         """
         try:
             if layout == "old":
+                print("old layout loaded")
+
                 # wait for page to load so posts are visible
                 body = driver.find_element(By.CSS_SELECTOR, "body")
                 for _ in range(randint(3, 5)):
@@ -134,11 +136,13 @@ class Utilities:
                     (By.CSS_SELECTOR, '.userContentWrapper')))
                 return True
             elif layout == "new":
+                print("new layout loaded")
                 WebDriverWait(driver, timeout).until(
                     EC.presence_of_element_located((By.CSS_SELECTOR, "[aria-posinset]")))
-                print("new layout loaded")
 
                 return True
+            else:
+                print("michale wtf")
 
         except WebDriverException:
             # if it was not found,it means either page is not loading or it does not exists
