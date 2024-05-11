@@ -6,7 +6,7 @@ with open("README.md", "r") as file:
 requirements = ['selenium==4.1.0',
                 'webdriver-manager==4.0.1',
                 'selenium-wire==5.1.0',
-                'python-dateutil==2.8.2']
+                'python-dateutil==2.8.2', 'blinker<1.8.0']
 
 
 setuptools.setup(
