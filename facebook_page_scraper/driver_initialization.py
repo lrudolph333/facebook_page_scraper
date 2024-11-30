@@ -46,6 +46,7 @@ class Initializer:
         if browser_name.lower() == "chrome":
             browser_option = ChromeOptions()
             # automatically installs chromedriver and initialize it and returns the instance
+
             if self.proxy is not None:
                 options = {
                     'https': 'https://{}'.format(self.proxy.replace(" ", "")),
@@ -53,10 +54,15 @@ class Initializer:
                     'no_proxy': 'localhost, 127.0.0.1'
                 }
                 logger.info("Using: {}".format(self.proxy))
+                # return webdriver.Chrome(executable_path="/Applications/chrome/mac_arm-121.0.6167.85/chrome-mac-arm64/Google Chrome for Testing.app",
+                #                         options=self.set_properties(browser_option), seleniumwire_options=options)
+
                 return webdriver.Chrome(executable_path=ChromeDriverManager().install(),
                                         options=self.set_properties(browser_option), seleniumwire_options=options)
 
-            return webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=self.set_properties(browser_option))
+            # return webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=self.set_properties(browser_option))
+            return webdriver.Chrome(executable_path="/Users/godye/github/Spotify-Streaming-Bot/chromedriver-mac-arm64/chromedriver",
+                options=self.set_properties(browser_option))
         elif browser_name.lower() == "firefox":
             browser_option = FirefoxOptions()
             if self.proxy is not None:
